@@ -16,7 +16,7 @@ def get_song_title(lyrics):
     return [title1, title2, title3]
 
 
-# testing the app: passing in video file url, converting to lyrics, printing out likely song titles
-ex_file = '/Users/kylehalloran/Desktop/heybrother.flac'
-lyrics = speech2text(ex_file)
+# testing the app: passing in audio file url, converting to lyrics, printing out likely song titles
+example_file = '/Users/kylehalloran/Desktop/heybrother.flac'
+lyrics = speech2text(example_file)
 pprint.pprint(get_song_title(lyrics))
