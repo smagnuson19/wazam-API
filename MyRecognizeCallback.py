@@ -1,3 +1,4 @@
+# used to specify parameters for watson speech to text
 from watson_developer_cloud.websocket import RecognizeCallback
 import json
 
