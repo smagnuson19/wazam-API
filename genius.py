@@ -1,3 +1,4 @@
+# getting song titles from genius search api
 from speech2text import speech2text
 import requests
 import pprint
@@ -17,6 +18,6 @@ def get_song_title(lyrics):
 
 
 # testing the app: passing in audio file url, converting to lyrics, printing out likely song titles
-example_file = '/Users/kylehalloran/Desktop/heybrother.flac'
-lyrics = speech2text(example_file)
-pprint.pprint(get_song_title(lyrics))
+# example_file = '/Users/kylehalloran/Desktop/heybrother.flac'
+# lyrics = speech2text(example_file)
+# pprint.pprint(get_song_title(lyrics))
