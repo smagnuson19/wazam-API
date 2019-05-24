@@ -19,7 +19,7 @@ def speech2text(file):
 
         results = speech_to_text.recognize(
             audio=audio_file,
-            content_type='audio/flac',
+            content_type='audio/wav',
             word_alternatives_threshold=0.9,
             keywords=['colorado', 'tornado', 'tornadoes'],
             keywords_threshold=0.5
