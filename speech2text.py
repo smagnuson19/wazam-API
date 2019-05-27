@@ -12,14 +12,14 @@ speech_to_text = SpeechToTextV1(
 speech_to_text.set_detailed_response(True)
 myRecognizeCallback = MyRecognizeCallback()
 
-ex_file = '/Users/kylehalloran/Desktop/College_Park.flac'
+
 
 def speech2text(file):
     with open(join(dirname(__file__), './.', file),'rb') as audio_file:
 
         results = speech_to_text.recognize(
             audio=audio_file,
-            content_type='audio/wav',
+            content_type='audio/webM',
             word_alternatives_threshold=0.9,
             keywords=['colorado', 'tornado', 'tornadoes'],
             keywords_threshold=0.5
@@ -29,5 +29,3 @@ def speech2text(file):
     return(results)
 
 # print(speech2text(ex_file))
-
-
