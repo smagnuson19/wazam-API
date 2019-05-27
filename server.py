@@ -3,6 +3,7 @@ from speech2text import *
 from genius import *
 from flask_cors import CORS
 import os
+import spotipy
 
 
 app = Flask(__name__)
@@ -22,8 +23,17 @@ def music():
         if(lyrics == None):
             return("No tracks matched, please try again.")
         else:
-            title = get_song_title(lyrics)
-            return jsonify(title)
+
+            songs = get_song_title(lyrics)
+            # for track in songs:
+            #     spotifyInfo = getSpotify(track['artist'], track['title'])
+            #     print(spotifyInfo)
+            return jsonify(songs)
+
+def getSpotify(artist, trackName):
+    spotipy.Spotify()
+    results = spotify.search(q='track:' + trackName + '%20' + 'artist:' + artist, type='track', limit = 1)
+    return results
 
 @app.route("/", methods = ['Get'])
 def index():

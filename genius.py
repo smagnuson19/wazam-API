@@ -4,6 +4,7 @@ import requests
 import pprint
 import re
 
+
 def get_song_title(lyrics):
     base_url = 'https://api.genius.com'
     headers = {'Authorization': 'Bearer ' + 'H0nKs-NteAExDITisOgp2z-akFjlMXpOH9ztkXTl9AWN2QrN8TBBmnygAXsJXvDs'}
@@ -11,10 +12,14 @@ def get_song_title(lyrics):
     data = {'q': lyrics}
     response = requests.get(search_url, data=data, headers=headers).json()
 
-    title1 = re.sub('\xa0',' ', response['response']['hits'][0]['result']['full_title'])
-    title2 = re.sub('\xa0',' ', response['response']['hits'][1]['result']['full_title'])
-    title3 = re.sub('\xa0',' ', response['response']['hits'][2]['result']['full_title'])
-    return [title1, title2, title3]
+    songList = []
+    for i in range(0,3):
+        songAttrs = {}
+        songAttrs['title'] = re.sub('\xa0',' ', response['response']['hits'][i]['result']['title'])
+        songAttrs['artist'] = re.sub('\xa0',' ', response['response']['hits'][i]['result']['primary_artist']['name'])
+        songAttrs['image'] = re.sub('\xa0',' ', response['response']['hits'][i]['result']['header_image_thumbnail_url'])
+        songList.append(songAttrs)
+    return songList
 
 
 # testing the app: passing in audio file url, converting to lyrics, printing out likely song titles
