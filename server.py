@@ -19,10 +19,11 @@ def music():
         track = path + "/ITEM.webm"
 
         lyrics = speech2text(track)
-        print(lyrics)
-        title = get_song_title(lyrics)
-
-    return jsonify(title)
+        if(lyrics == None):
+            return("No tracks matched, please try again.")
+        else:
+            title = get_song_title(lyrics)
+            return jsonify(title)
 
 @app.route("/", methods = ['Get'])
 def index():

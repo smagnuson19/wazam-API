@@ -24,8 +24,11 @@ def speech2text(file):
             keywords=['colorado', 'tornado', 'tornadoes'],
             keywords_threshold=0.5
 
-        ).get_result()["results"][0]["alternatives"][0]["transcript"]
-
-    return(results)
+        ).get_result()["results"]
+        if (len(results) == 0):
+            return(None)
+        else:
+            results = results[0]["alternatives"][0]["transcript"]
+            return(results)
 
 # print(speech2text(ex_file))
