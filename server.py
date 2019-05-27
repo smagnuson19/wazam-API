@@ -21,12 +21,14 @@ def music():
         track = path + "/ITEM.webm"
 
         lyrics = speech2text(track)
+        print(lyrics)
         if(lyrics == None):
             return jsonify("No tracks matched, please try again.")
         else:
             songs = get_song_title(lyrics)
             for track in songs:
-                spotifyInfo = getSpotify(track['artist'], track['title'])
+                spotifyURL = getSpotify(track['artist'], track['title'])
+                track['spotify'] = spotifyURL
             return jsonify(songs)
 
 def getSpotify(artist, trackName):
