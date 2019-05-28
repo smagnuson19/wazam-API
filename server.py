@@ -1,12 +1,16 @@
 from flask import Flask, jsonify, request
+from dotenv import load_dotenv
+import os
 from speech2text import *
 from genius import *
 from flask_cors import CORS
-import os
+
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
 
+
+load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
@@ -32,7 +36,7 @@ def music():
             return jsonify(songs)
 
 def getSpotify(artist, trackName):
-    client_credentials_manager = SpotifyClientCredentials(client_id='bfd32c7ebd164161b156849eed4a8ef9', client_secret='04e61280954a4819a08566ba515ad7e3')
+    client_credentials_manager = SpotifyClientCredentials(client_id='bfd32c7ebd164161b156849eed4a8ef9', client_secret=os.getenv('client_secret'))
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
     print(artist)

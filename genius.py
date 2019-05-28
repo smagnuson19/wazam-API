@@ -3,11 +3,13 @@ from speech2text import speech2text
 import requests
 import pprint
 import re
+from dotenv import load_dotenv
+import os
 
 
 def get_song_title(lyrics):
     base_url = 'https://api.genius.com'
-    headers = {'Authorization': 'Bearer ' + 'H0nKs-NteAExDITisOgp2z-akFjlMXpOH9ztkXTl9AWN2QrN8TBBmnygAXsJXvDs'}
+    headers = {'Authorization': 'Bearer ' + os.getenv('genius')}
     search_url = base_url + '/search'
     data = {'q': lyrics}
     response = requests.get(search_url, data=data, headers=headers).json()

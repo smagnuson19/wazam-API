@@ -2,10 +2,12 @@
 from watson_developer_cloud import SpeechToTextV1
 from MyRecognizeCallback import MyRecognizeCallback
 from os.path import join, dirname
+from dotenv import load_dotenv
+import os
 
 
 speech_to_text = SpeechToTextV1(
-    iam_apikey='boED_50f9NKg5_1xaA9pKuLMP8ihPu7OxA-sW-3O--Le',
+    iam_apikey=os.getenv('iam_apikey'),
     url='https://stream.watsonplatform.net/speech-to-text/api'
 )
 
